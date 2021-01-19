@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
 import messageReducer from './messageReducer'
-import statusReducer from './statusRedicer'
+import userReducer from './userReducer'
 
 
 const rootReducer = combineReducers({
-	status: statusReducer,
 	message: messageReducer,
+	user: userReducer,
 })
 
 export default rootReducer

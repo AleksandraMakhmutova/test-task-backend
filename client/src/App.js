@@ -1,16 +1,30 @@
 
 import './App.css';
-import FormAddTask from './Components/FormAddTask';
+
 import Header from './Components/Header';
+import LoginPage from './Components/LoginPage';
 import Task from './Components/Task';
-// import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import EditPage from './Components/EditPage';
 
 function App() {
   return (
-	 <>
-	 <FormAddTask/>
+		 <div className="mt-5 mb-5">
+	 <BrowserRouter>
+	 <Header />
+	 <Switch>
+	 <Route exact path="/">
 	 <Task/>
-	 </>
+          </Route>
+					<Route exact path="/login">
+<LoginPage/>
+			 </Route>
+			 <Route exact path="/edit/:id">
+<EditPage/>
+			 </Route>		
+					</Switch>
+</BrowserRouter>
+</div>
   );
 }
 

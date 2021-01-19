@@ -29,5 +29,12 @@ export const addNewTask = (newTasks)=>{
 }
 
 
+export const authLogin = (tokens) =>{
+	return {
+    type: TYPES.STATUS_AUTH,
+    payload: {...tokens}
+  }
+}
+
 
 

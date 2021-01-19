@@ -57,20 +57,23 @@ const dispatch = useDispatch()
   }
 
 	return (
+		<div className="d-flex justify-content-center ml-3">
 				<form onSubmit={handleSubmit}>
-									<div class="form-group">
+									<div className="form-group">
 												<input type="text" className="form-control" name="username" placeholder='Имя' onChange={handleChange} value={username} required/>
 												</div>
-												<div class="form-group">
+												<div className="form-group">
 														<input type="email" name="email" className="form-control" placeholder="Email" onChange={handleChange} value={email} required/>
 												</div>
-												<div class="form-group">
-												<textarea className="form-control" cols="30" rows="10" name="text" placeholder='Сообщение...' onChange={handleChange} value={text} required></textarea>
+												<div className="form-group">
+												<textarea className="form-control" cols="15" rows="4" name="text" placeholder='Task...' onChange={handleChange} value={text} required></textarea>
 										</div>
-										<div className="button">
-										<button type="submit" className="btn btn-primary">Отправить</button>
+										<div className="'d-flex my-4 justify-content-center'">
+										<button type="submit" className="btn btn-primary">Добавить</button>
 										</div>
 								</form>
+    </div>
+
 	)
 }
 
