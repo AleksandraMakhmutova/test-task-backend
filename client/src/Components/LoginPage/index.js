@@ -35,7 +35,7 @@ const history = useHistory()
         body: data,
       };
 
-      fetch("http://localhost:3355/login", requestOptions)
+      fetch("/login", requestOptions)
         .then(response => response.json())
         .then(result => {
           dispatch(authLogin({

@@ -18,7 +18,7 @@ const [inputs, setInputs] = useState({
 
 
 useEffect(()=>{
-	fetch(`http://localhost:3355/edit/${id}`)
+	fetch(`/edit/${id}`)
 	.then(res=> res.json())
 	.then(data=> 
 	setInputs({
@@ -42,7 +42,7 @@ const history = useHistory()
 	
 	async function handleSubmit(event) {
     event.preventDefault();
-    const res = await fetch(`http://localhost:3355/edit/${id}`, {
+    const res = await fetch(`/edit/${id}`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

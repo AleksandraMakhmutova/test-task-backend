@@ -27,7 +27,7 @@ const history = useHistory()
 
 	async function handleSubmit(event) {
     event.preventDefault();
-    const res = await fetch('http://localhost:3355/create', {
+    const res = await fetch('/create', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

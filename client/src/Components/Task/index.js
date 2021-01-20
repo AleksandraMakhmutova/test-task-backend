@@ -11,7 +11,7 @@ function Task() {
 
 const task = useSelector((state) => state.message.message)
 	useEffect(() => {
-		fetch('http://localhost:3355/tasks')
+		fetch('/tasks')
 		.then(response =>response.json())
 		.then(data=>dispatch(addMessageToRedux(data.message.tasks)))
 }, [task])
