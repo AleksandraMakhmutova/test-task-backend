@@ -1,4 +1,5 @@
 const initState = {
-	message: {}
+	message: {},
+	user: {isAuth:false}
 }
 export default initState

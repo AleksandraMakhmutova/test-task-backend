@@ -92,8 +92,9 @@ el.email = emailEdit,
 el.text = textEdit
 	}
 return el
-} )
+} 
 
+)
 res.sendStatus(200)
 })
 app.get("/logout", (req, res) => {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import {authLogin} from '../../redux/actions/actions'
 
@@ -7,22 +8,22 @@ import {authLogin} from '../../redux/actions/actions'
 function LoginPage() {
 
   let dispatch = useDispatch()
-
-  const [email, setEmail] = useState("")
+const history = useHistory()
+  const [name, setName] = useState("")
   const [pass, setPass] = useState("")
 
-  const handlerEmail = (e) => setEmail(e.target.value)
+  const handlerName = (e) => setName(e.target.value)
   const handlerPass = (e) => setPass(e.target.value)
 
 
   let login = () => {
 
-    if (email.trim() && pass.trim()) {
+    if (name.trim() && pass.trim()) {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       let data = {
-        email,
+        name,
         pass
       }
 
@@ -40,7 +41,8 @@ function LoginPage() {
           dispatch(authLogin({
             accessToken: result.accessToken,
             refreshToken: result.refreshToken
-          }))
+					}))
+					history.replace('/')
         })
         .catch(error => console.log('error', error));
     }
@@ -56,7 +58,7 @@ function LoginPage() {
     <div className="d-flex justify-content-center">
       <form onSubmit={handlerSubmit}>
         <div className="form-group">
-          <input placeholder={'Email'} type="email" className="form-control" onChange={handlerEmail} value={email} />
+          <input placeholder={'Login'} type="name" className="form-control" onChange={handlerName} value={name} />
         </div>
         <div>
           <input placeholder={'Pass'} type="password" className="form-control" onChange={handlerPass} value={pass}  /> 

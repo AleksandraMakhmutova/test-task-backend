@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+		"build": "cd client && yarn && npm run build",
+    "start": "cd client && npm run build && cd .. && node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,5 +30,10 @@
     "path": "^0.12.7",
     "session": "^0.1.0",
     "uuid": "^8.3.2"
+	},
+	"engines": {
+    "node": "14.x",
+    "npm": "6.x",
+    "yarn": "1.x"
   }
 }

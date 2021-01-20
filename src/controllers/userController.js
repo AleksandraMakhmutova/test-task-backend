@@ -13,16 +13,16 @@ const {
 const saltRounds = process.env.saltRounds ?? 10
 
 const login = (req, res) => {
-	const { email, pass } = req.body
-  if (email && pass) {
+	const { name, pass } = req.body
+  if (name && pass) {
     try {
-			const user = User.map(el=> (el.email === email))
+			const user = User.map(el=> (el.login === name))
 			console.log(user);
 			const isValidPass = User.map(el=> (el.pass === pass))
 			
       if (isValidPass) {
 				req.session.user = {
-					email,
+					name,
 			}
         const payload = { id: user._id }
         user.accessToken = createToken('access', payload)
@@ -73,18 +73,11 @@ window.localStorage.clear()
 res.status(202).redirect('/')
 }
 
-const info = async (req, res) => {
-  const { id } = req.body
-  const user = await User.find(id)
-  res.json({
-    name: user.name,
-    email: user.email,
-  })
-}
+
 
 module.exports = {
   login,
   token,
   logout,
-  info,
+
 }

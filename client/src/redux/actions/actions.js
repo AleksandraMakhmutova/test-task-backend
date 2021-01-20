@@ -36,5 +36,12 @@ export const authLogin = (tokens) =>{
   }
 }
 
+export const authLoginOut = (tokens) =>{
+	return {
+    type: TYPES.STATUS_AUTH_OUT,
+    payload: {...tokens}
+  }
+}
+
 
 

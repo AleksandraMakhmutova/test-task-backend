@@ -8,8 +8,8 @@ import { useHistory, useParams } from 'react-router-dom';
 function EditPage() {
 const dispatch = useDispatch()
 const { id } = useParams();
-
-
+const isAuth = useSelector(state=> state.user.isAuth)
+console.log(">>>>>",isAuth);
 const [inputs, setInputs] = useState({
 	username:"",
 	email:"",
@@ -29,10 +29,6 @@ useEffect(()=>{
 	)
 },[])
 const history = useHistory()
-
-
-
-
 
 
 	const { username, email, text } = inputs;
@@ -59,11 +55,17 @@ const history = useHistory()
 		})
 		if (res.status === 200) {
 			history.replace('/')
-    }
+		}
+		if(res.status === 404){
+			history.replace('/page_not_found')
+		}
   }
 
 	return (
-		<div className="d-flex justify-content-center ml-3">
+<>
+ <div className="d-flex justify-content-center ml-3">
+ {
+	isAuth ?
 				<form onSubmit={handleSubmit}>
 									<div className="form-group">
 												<input type="text" className="form-control" name="username" onChange={handleChange} value={username} required/>
@@ -77,9 +79,11 @@ const history = useHistory()
 										<div className="'d-flex my-4 justify-content-center'">
 										<button type="submit" className="btn btn-primary">Редактировать</button>
 										</div>
-								</form>
-    </div>
-
+								</form>:<p>Войдите для редактирования задачи.</p>
+								}
+    </div> 	
+										
+</>
 	)
 }
 

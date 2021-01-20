@@ -10,6 +10,12 @@ const userReducer = (state = [], action) => {
 					tokens: {
 						...action.payload,
 					}}
+					case TYPES.STATUS_AUTH_OUT:
+			return { 
+				...state,
+					isAuth: false,
+					tokens: {
+					}}
     default:
       return state
   }

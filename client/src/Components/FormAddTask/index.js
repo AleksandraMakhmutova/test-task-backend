@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewTask } from '../../redux/actions/actions';
 import { v4 as uuidv4 } from 'uuid';
+import { useHistory } from 'react-router-dom';
 
 
 function FormAddTask() {
 const dispatch = useDispatch()
-
+const history = useHistory()
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -45,14 +46,14 @@ const dispatch = useDispatch()
 			"status": 0
 		})
 		dispatch(addNewTask(tasks))
-
+    
 		if (res.status === 200) {
 			setInputs({
 				username: "",
 				email: "",
 				text: ""
 			})
-			
+			history.replace('/')
     }
   }
 
